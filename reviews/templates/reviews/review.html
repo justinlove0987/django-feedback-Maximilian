@@ -7,6 +7,13 @@
     <title>Your Review</title>
 </head>
 <body>
-    
+    <form>
+    {% comment %} for attribute where you point at the ID of another element to which this label is related {% endcomment %}
+    <label for="username">Your name</label>
+    {% comment %} name attribute allows us to add to form element, 
+    let us to identified the submitted values once the form was submitted  {% endcomment %}
+    <input id="username" name="username" type="text">
+    <button>Send</button>
+    </form>
 </body>
 </html>
