@@ -15,6 +15,9 @@
     {% comment %} Django will generate unique token and add it in the form,
     and validate the token once our POST request arrives back on the server.{% endcomment %}
     {% csrf_token %}
+    {% if has_error %}
+        <p>This form is invalid - please enter a valid username!</p>
+    {% endif %}
     {% comment %} for attribute where you point at the ID of another element to which this label is related {% endcomment %}
     <label for="username">Your name</label>
     {% comment %} name attribute allows us to add to form element, 
