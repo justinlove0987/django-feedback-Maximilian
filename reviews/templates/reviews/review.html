@@ -11,6 +11,9 @@
     POST request unlike a GET request can carry data.
     {% endcomment %}
     <form method="POST">
+    {% comment %} Django will generate unique token and add it in the form,
+    and validate the token once our POST request arrives back on the server.{% endcomment %}
+    {% csrf_token %}
     {% comment %} for attribute where you point at the ID of another element to which this label is related {% endcomment %}
     <label for="username">Your name</label>
     {% comment %} name attribute allows us to add to form element, 
@@ -25,3 +28,10 @@
     </form>
 </body>
 </html>
+
+{% comment %} 
+CSRF Protection, we add a dynamically generated token to our generated forms,
+and that token then has to be sent together with the POST request to our servers.
+If someone fakes our site, the token will be missing.
+
+{% endcomment %}
