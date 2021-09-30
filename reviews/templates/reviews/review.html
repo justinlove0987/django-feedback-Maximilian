@@ -7,13 +7,21 @@
     <title>Your Review</title>
 </head>
 <body>
-    <form>
+    {% comment %} the method attribute's default is GET 
+    POST request unlike a GET request can carry data.
+    {% endcomment %}
+    <form method="POST">
     {% comment %} for attribute where you point at the ID of another element to which this label is related {% endcomment %}
     <label for="username">Your name</label>
     {% comment %} name attribute allows us to add to form element, 
     let us to identified the submitted values once the form was submitted  {% endcomment %}
     <input id="username" name="username" type="text">
-    <button>Send</button>
+    {% comment %} default type is submit {% endcomment %}
+    {% comment %} if we set the type to 'buttom', the page won't reload {% endcomment %}
+    {% comment %} post request is a type we want to send when it's not primarily about getting back data
+    but it's instead about submitting data to the server.
+     {% endcomment %}
+    <button type="submmit">Send</button>
     </form>
 </body>
 </html>
