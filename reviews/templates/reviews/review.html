@@ -15,19 +15,7 @@
     {% comment %} Django will generate unique token and add it in the form,
     and validate the token once our POST request arrives back on the server.{% endcomment %}
     {% csrf_token %}
-    {% if has_error %}
-        <p>This form is invalid - please enter a valid username!</p>
-    {% endif %}
-    {% comment %} for attribute where you point at the ID of another element to which this label is related {% endcomment %}
-    <label for="username">Your name</label>
-    {% comment %} name attribute allows us to add to form element, 
-    let us to identified the submitted values once the form was submitted  {% endcomment %}
-    <input id="username" name="username" type="text">
-    {% comment %} default type is submit {% endcomment %}
-    {% comment %} if we set the type to 'buttom', the page won't reload {% endcomment %}
-    {% comment %} post request is a type we want to send when it's not primarily about getting back data
-    but it's instead about submitting data to the server.
-     {% endcomment %}
+    {{ form }}
     <button type="submmit">Send</button>
     </form>
 </body>
