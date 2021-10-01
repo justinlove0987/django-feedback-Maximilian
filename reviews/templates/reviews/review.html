@@ -10,29 +10,16 @@
     <link rel="stylesheet" href="{% static 'reviews/style.css' %}">
 </head>
 <body>
-    {% comment %} the method attribute's default is GET 
-    POST request unlike a GET request can carry data.
-    {% endcomment %}
-    {% comment %} action attribute allows us to specify the path after our domain {% endcomment %}
     <form action="/" method="POST">
-    {% comment %} Django will generate unique token and add it in the form,
-    and validate the token once our POST request arrives back on the server.{% endcomment %}
     {% csrf_token %}
-    {% comment %} if form.user_name.errors is True return the errors class {% endcomment %}
-    <div class="form-control {% if form.user_name.errors %}errors{% endif %}">
-    {% comment %} put error messages below {% endcomment %}
-    {{ form.user_name.label_tag }}
-    {{ form.user_name }}
-    {{ form.user_name.errors }}
+    {% for field in form %}
+    <div class="form-control {% if field.errors %}errors{% endif %}">
+    {{ field.label_tag }}
+    {{ field }}
+    {{ field.errors }}
     </div>
+    {% endfor %}
     <button type="submmit">Send</button>
     </form>
 </body>
 </html>
-
-{% comment %} 
-CSRF Protection, we add a dynamically generated token to our generated forms,
-and that token then has to be sent together with the POST request to our servers.
-If someone fakes our site, the token will be missing.
-
-{% endcomment %}
