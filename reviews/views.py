@@ -17,7 +17,8 @@ def review(request):
             return HttpResponseRedirect("/thank-you")
 
     # if we don't make the value into the if block above, we would recreate the form and rerender the template.
-    form = ReviewForm()
+    else:
+        form = ReviewForm()
 
     return render(request, "reviews/review.html", {
         "form": form
