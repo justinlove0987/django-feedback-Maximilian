@@ -10,7 +10,7 @@ from .models import Review
 def review(request):
     # method property which tells us the HTTP method which was used for this request.
     if request.method == 'POST':
-        form = ReviewForm(request.POST)
+        # form = ReviewForm(request.POST)
         # When form.save(), we will then save the data not as a new entry,- 
         # - but to update the existing entry in the database.
         existing_data = Review.objects.get(pk=1)

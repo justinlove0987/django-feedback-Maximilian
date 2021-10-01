@@ -40,4 +40,4 @@ class ReviewForm(forms.ModelForm):
 # 1. create a modelform for Review model
 # 2. assign labels: "user_name": "Your Name", "review_text": "Your Feedback", "rating": "Your Rating"
 # 3. asign error messages: "user_name": {"required": "Your name must not be empty!", "max_length": "Please enter a shorter name!"}
-# 4. modify Review model.
+# 4. save data with modelform.
