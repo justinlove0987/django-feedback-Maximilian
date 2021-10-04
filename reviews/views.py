@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
 from django.views.generic.base import TemplateView
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from .forms import ReviewForm
 from .models import Review
@@ -51,13 +51,10 @@ class ReviewsListView(ListView):
         return data
     
 
-class SingleReviewView(TemplateView):
+class SingleReviewView(DetailView):
     template_name = "reviews/single_review.html"
+    # django automatically took the model name basically all lower case - 
+    # - and exposes the fetched single peice of data though the model name to our template.
+    model = Review
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # id is from urls.py
-        review_id = kwargs["id"]
-        selected_review = Review.objects.get(pk=review_id)
-        context["review"] = selected_review
-        return context
+    # django identify a single item with our slug or the primary key defined by us in our urls.py.
