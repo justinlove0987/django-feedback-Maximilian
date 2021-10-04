@@ -126,4 +126,5 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# STATICFILES_DIRS = [ BASE_DIR / "reivews/static" ]
+# MEDIA_ROOT will tell django where to store our files in general.
+MEDIA_ROOT = BASE_DIR / "uploads"
