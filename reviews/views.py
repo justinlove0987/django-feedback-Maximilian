@@ -3,7 +3,8 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import FormView
+# CreateView automaticaaly save data for us.
+from django.views.generic.edit import CreateView
 
 from .forms import ReviewForm
 from .models import Review
@@ -11,33 +12,14 @@ from .models import Review
 
 # Create your views here.
 
-class ReviewView(FormView):
+class ReviewView(CreateView):
+    model = Review
+    # labels key is not possible here, so we can point to form_class too.
     form_class = ReviewForm
+    # fields = "__all__"
     template_name = "reviews/review.html"
     success_url = "/thank-you"
 
-    # the method will be executed by django when the form is submitted.
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
-    
-    # get method simply taken care of by django
-    # def get(self, request):
-    #     form = ReviewForm()
-    #     return render(request, "reviews/review.html", {
-    #         "form": form
-    #     })
-    
-    # def post(self, request):
-    #     form = ReviewForm(request.POST)
-
-    #     if form.is_valid():
-    #         form.save()
-    #         return HttpResponseRedirect("/thank-you")
-
-    #     return render(request, "reviews/review.html", {
-    #         "form": form
-    #     })
 
 class TankYouView(TemplateView):
     def get_template_names(self):
