@@ -10,10 +10,8 @@
 </head>
 <body>
   <form action="/profiles/" method="POST" enctype="multipart/form-data">
-    {% comment %} enctype tells browser when the form submitted will contain a file -  {% endcomment %}
-    {% comment %} - and will change how the request is sent to the server{% endcomment %}
     {% csrf_token %}
-    <input type="file" name="image"/>
+    {{ form }}
     <button>Upload!</button>
   </form>
 </body>
