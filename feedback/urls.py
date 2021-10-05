@@ -15,9 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+#  it's a helper function which serves static files
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("reviews.urls")),
     path("profiles/", include("profiles.urls"))
-]
+]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# for data stored in other files like user uploads, 
+# we have to manually make Django aware of those folders.
+# document_root wants a path to the folder that contains the files that should be exposed.

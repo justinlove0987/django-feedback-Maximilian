@@ -128,3 +128,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # MEDIA_ROOT will tell django where to store our files in general.
 MEDIA_ROOT = BASE_DIR / "uploads"
+# MEDIA_URL is the url we want to show to the outside world from which these files can be loaded.
+MEDIA_URL = "/user-media/"
