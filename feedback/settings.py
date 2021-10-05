@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    # the app will enable django built-n sessions support
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # by default is added, but we should make sure it exist here when we deal with session.
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -130,3 +132,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = BASE_DIR / "uploads"
 # MEDIA_URL is the url we want to show to the outside world from which these files can be loaded.
 MEDIA_URL = "/user-media/"
+
+# Here we can define how long a session cookie and therefore session itself should survive.
+# SESSION_COOKIE_AGE = 120 # this means two miniutes.
