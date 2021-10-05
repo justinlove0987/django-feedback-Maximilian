@@ -11,7 +11,7 @@
         {% comment %} if form is submitted we have to ensure the CSRF token is included {% endcomment %}
         {% csrf_token %}
         {% comment %} hidden is a input which the user can't edit {% endcomment %}
-        <input type="text" name="reivew_id" value="{{ review.id }}">
+        <input type="hidden" name="reivew_id" value="{{ review.id }}">
         <button>Favorite</button>
     </form>
 {% endblock content %}
