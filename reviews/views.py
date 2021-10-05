@@ -54,7 +54,8 @@ class SingleReviewView(DetailView):
         context =  super().get_context_data(**kwargs)
         loaded_review = self.object
         request = self.request
-        favorite_id = request.session["favorite_review"]
+        # use get method, it will not throw an error if favorite review doesn't exist yet.
+        favorite_id = request.session.get("favorite_review")
         context["is_favorite"] = favorite_id == str(loaded_review.id)
         return context
     
