@@ -49,6 +49,14 @@ class SingleReviewView(DetailView):
     # django automatically took the model name basically all lower case - 
     # - and exposes the fetched single peice of data though the model name to our template.
     model = Review
+
+    def get_context_data(self, **kwargs):
+        context =  super().get_context_data(**kwargs)
+        loaded_review = self.object
+        request = self.request
+        favorite_id = request.session["favorite_review"]
+        context["is_favorite"] = favorite_id == str(loaded_review.id)
+        return context
     
     # django identify a single item with our slug or the primary key defined by us in our urls.py.
 
