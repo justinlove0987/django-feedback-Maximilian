@@ -51,3 +51,9 @@ class SingleReviewView(DetailView):
     model = Review
     
     # django identify a single item with our slug or the primary key defined by us in our urls.py.
+
+
+class AddFavoriteView(View):
+    def post(self, request):
+        review_id = request.POST["review_id"]
+        fav_review = Review.objects.get(pk=review_id)
